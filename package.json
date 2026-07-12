@@ -1,0 +1,10 @@
+{
+  "name": "fidouh.dev",
+  "private": true,
+  "scripts": {
+    "prepare": "lefthook install"
+  },
+  "devDependencies": {
+    "lefthook": "^2.1.10"
+  }
+}

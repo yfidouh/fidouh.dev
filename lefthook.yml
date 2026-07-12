@@ -1,0 +1,8 @@
+# Git hooks (installed via `bunx lefthook install`, runs automatically after `bun install` at root)
+pre-commit:
+  commands:
+    prettier:
+      root: "apps/yahya/"
+      glob: "*.{js,mjs,ts,tsx,astro,css,md,mdx,json,yml,yaml}"
+      run: bunx prettier --write {staged_files}
+      stage_fixed: true
