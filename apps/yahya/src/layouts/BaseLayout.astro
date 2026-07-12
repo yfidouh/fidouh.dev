@@ -1,0 +1,78 @@
+---
+import '@fontsource-variable/inter';
+import '../styles/global.css';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import { SITE_TITLE } from '../consts';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalURL} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={SITE_TITLE}
+      href={new URL('rss.xml', Astro.site)}
+    />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <script is:inline>
+      const theme =
+        localStorage.getItem('theme') ??
+        (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.classList.toggle('dark', theme === 'dark');
+    </script>
+  </head>
+  <body
+    class="min-h-dvh bg-white font-sans text-neutral-900 antialiased dark:bg-neutral-950 dark:text-neutral-100"
+  >
+    <div class="mx-auto flex min-h-dvh max-w-2xl flex-col px-6">
+      <header class="flex items-center justify-between py-8">
+        <a href="/" class="font-semibold tracking-tight">Yahya Fidouh</a>
+        <nav
+          class="flex items-center gap-5 text-sm text-neutral-600 dark:text-neutral-400"
+        >
+          <a
+            href="/blog"
+            class="hover:text-neutral-900 dark:hover:text-neutral-100">Blog</a
+          >
+          <a
+            href="/about"
+            class="hover:text-neutral-900 dark:hover:text-neutral-100">About</a
+          >
+          <ThemeToggle />
+        </nav>
+      </header>
+      <main class="flex-1 py-8">
+        <slot />
+      </main>
+      <footer
+        class="flex items-center justify-between py-8 text-sm text-neutral-500 dark:text-neutral-400"
+      >
+        <span>© {new Date().getFullYear()} Yahya Fidouh</span>
+        <a
+          href="/rss.xml"
+          class="hover:text-neutral-900 dark:hover:text-neutral-100">RSS</a
+        >
+      </footer>
+    </div>
+  </body>
+</html>

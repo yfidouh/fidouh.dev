@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<BaseLayout title={`About — ${SITE_TITLE}`} description="About Yahya Fidouh.">
+  <h1 class="text-2xl font-semibold tracking-tight">About</h1>
+  <div class="prose prose-neutral dark:prose-invert mt-6">
+    <p>
+      Hi, I'm Yahya. I build software, and this site is where I write about it.
+    </p>
+    <p>
+      The posts aim to be the resource I wish I'd found when I first went
+      looking: concrete, visual where it helps, and honest about trade-offs.
+    </p>
+  </div>
+</BaseLayout>
