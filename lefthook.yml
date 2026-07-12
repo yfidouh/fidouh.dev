@@ -1,4 +1,5 @@
-# Git hooks (installed via `bunx lefthook install`, runs automatically after `bun install` at root)
+# Git hooks (installed via `bunx lefthook install`, runs automatically after `bun install` at root).
+# PATH for GUI git clients is fixed in .lefthookrc, which the hook script sources by convention.
 pre-commit:
   commands:
     prettier:

@@ -1,0 +1,3 @@
+# Sourced by lefthook before hook commands run (wired via `rc` in lefthook.yml).
+# GUI git clients (VS Code etc.) spawn hooks with a minimal PATH that lacks Bun.
+export PATH="$HOME/.bun/bin:$PATH"
